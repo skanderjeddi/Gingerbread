@@ -4,6 +4,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 
 import com.skanderj.gingerbread.Process;
+import com.skanderj.gingerbread.display.Window;
 
 public abstract class Game extends Process {
 	public static final int DEFAULT_SIZE = 400, DEFAULT_BUFFERS = 2;
@@ -18,7 +19,7 @@ public abstract class Game extends Process {
 	public Game(String identifier, double rate, String title, int width, int height, int buffers) {
 		super(identifier);
 		this.rate = rate;
-		this.window = new Window(this, title, width, height, buffers);	
+		this.window = new Window(this, title, width, height, buffers);
 	}
 
 	@Override
@@ -76,7 +77,7 @@ public abstract class Game extends Process {
 
 	/**
 	 * Renders the game
-	 * 
+	 *
 	 * @param graphics used to draw the screen
 	 */
 	public abstract void render(Graphics graphics);
