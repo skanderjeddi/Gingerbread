@@ -5,12 +5,16 @@ import java.awt.Graphics;
 
 import com.skanderj.gingerbread.Process;
 import com.skanderj.gingerbread.display.Window;
+import com.skanderj.gingerbread.input.Keyboard;
+import com.skanderj.gingerbread.input.Mouse;
 
 public abstract class Game extends Process {
 	public static final int DEFAULT_SIZE = 400, DEFAULT_BUFFERS = 2;
 
 	protected double rate;
 	protected Window window;
+	protected Keyboard keyboard;
+	protected Mouse mouse;
 
 	public Game(String identifier, double rate) {
 		this(identifier, rate, identifier, Game.DEFAULT_SIZE, Game.DEFAULT_SIZE, Game.DEFAULT_BUFFERS);
@@ -20,10 +24,14 @@ public abstract class Game extends Process {
 		super(identifier);
 		this.rate = rate;
 		this.window = new Window(this, title, width, height, buffers);
+		this.keyboard = new Keyboard();
+		this.mouse = new Mouse();
 	}
 
 	@Override
 	protected void create() {
+		this.window.registerKeyboard(this.keyboard);
+		this.window.registerMouse(this.mouse);
 		this.window.show();
 	}
 
@@ -82,4 +90,11 @@ public abstract class Game extends Process {
 	 */
 	public abstract void render(Graphics graphics);
 
+	public final void updateKeyboard() {
+		this.keyboard.update();
+	}
+
+	public final void updateMouse() {
+		this.mouse.update();
+	}
 }
