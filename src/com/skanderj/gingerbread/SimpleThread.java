@@ -1,16 +1,16 @@
 package com.skanderj.gingerbread;
 
-public abstract class Process {
+public abstract class SimpleThread {
 	public static final int EXIT_SUCCESS = 0, EXIT_FAILURE = -1;
 
 	private Thread thread;
 	protected boolean isRunning;
 
-	public Process(String identifier) {
+	public SimpleThread(String identifier) {
 		this.thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				Process.this.run();
+				SimpleThread.this.run();
 			}
 		}, String.format("Process[%s]", identifier));
 		this.isRunning = false;

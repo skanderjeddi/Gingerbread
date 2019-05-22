@@ -3,12 +3,12 @@ package com.skanderj.gingerbread.core;
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 
-import com.skanderj.gingerbread.Process;
+import com.skanderj.gingerbread.SimpleThread;
 import com.skanderj.gingerbread.display.Window;
 import com.skanderj.gingerbread.input.Keyboard;
 import com.skanderj.gingerbread.input.Mouse;
 
-public abstract class Game extends Process {
+public abstract class Process extends SimpleThread {
 	public static final int DEFAULT_SIZE = 400, DEFAULT_BUFFERS = 2;
 
 	protected double rate;
@@ -16,11 +16,11 @@ public abstract class Game extends Process {
 	protected Keyboard keyboard;
 	protected Mouse mouse;
 
-	public Game(String identifier, double rate) {
-		this(identifier, rate, identifier, Game.DEFAULT_SIZE, Game.DEFAULT_SIZE, Game.DEFAULT_BUFFERS);
+	public Process(String identifier, double rate) {
+		this(identifier, rate, identifier, Process.DEFAULT_SIZE, Process.DEFAULT_SIZE, Process.DEFAULT_BUFFERS);
 	}
 
-	public Game(String identifier, double rate, String title, int width, int height, int buffers) {
+	public Process(String identifier, double rate, String title, int width, int height, int buffers) {
 		super(identifier);
 		this.rate = rate;
 		this.window = new Window(this, title, width, height, buffers);
@@ -96,5 +96,9 @@ public abstract class Game extends Process {
 
 	public final void updateMouse() {
 		this.mouse.update();
+	}
+
+	public static final float mapf(float value, float valueMin, float valueMax, float targetMin, float targetMax) {
+		return ((value - valueMin) / (valueMax - valueMin)) * (targetMax - targetMin) + targetMin;
 	}
 }

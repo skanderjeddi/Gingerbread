@@ -3,9 +3,9 @@ package com.skanderj.gingerbread;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import com.skanderj.gingerbread.core.Game;
+import com.skanderj.gingerbread.core.Process;
 
-public final class Gingerbread extends Game {
+public final class Gingerbread extends Process {
 	public static final String IDENTIFIER = "gingerbread", TITLE = "Gingerbread";
 	public static final int OGX = 0, OGY = 0, WIDTH = 600, HEIGHT = Gingerbread.WIDTH, BUFFERS = 2;
 	public static final double RATE = 30.0;
