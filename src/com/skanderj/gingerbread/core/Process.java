@@ -1,7 +1,7 @@
 package com.skanderj.gingerbread.core;
 
-import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 import com.skanderj.gingerbread.SimpleThread;
 import com.skanderj.gingerbread.display.Window;
