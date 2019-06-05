@@ -7,7 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 
-import com.skanderj.gingerbread.core.Process;
+import com.skanderj.gingerbread.core.Game;
 import com.skanderj.gingerbread.input.Keyboard;
 import com.skanderj.gingerbread.input.Mouse;
 
@@ -19,7 +19,7 @@ public class Window {
 
 	private boolean isCloseRequested;
 
-	public Window(Process game, String title, int width, int height, int buffers) {
+	public Window(Game game, String title, int width, int height, int buffers) {
 		this.frame = new Frame();
 		this.canvas = new Canvas();
 		this.canvas.setMinimumSize(new Dimension(width, height));
